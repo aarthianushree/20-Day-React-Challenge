@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+    <title> 20 day React Challenge</title>
+
+  </head>
+
+  <body>
+
+    <div class="root"></div>
+
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+
+    <script  crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+
+      const rootElement = document.querySelector('.root')
+
+      const jsxElement = <h1>React CDN way</h1>
+
+      // we render the JSX element using the ReactDOM package
+      // ReactDOM has the render method and the render method takes two arguments
+      const header = (
+        <header style={headerStyle}>
+          <h1>My 20 day's of react</h1>
+        </header>
+      )
+
+      const main = (
+        <main>
+          <ul>
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>JS</li>
+            <li>REACT</li>
+            <li>JAVA</li>
+          </ul>
+        </main>
+      )
+
+      const footer = (
+        <footer>
+          <p>footer</p>
+        </footer>
+      )
+
+      const app = (
+        <div>
+          {header} 
+          {main} 
+          {footer}
+        </div>
+      )
+       
+      ReactDOM.render(app, rootElement)
+    </script>
+
+    
+
+  </body>
+</html>
