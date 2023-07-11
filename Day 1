@@ -65,3 +65,41 @@
 
   </body>
 </html>
+
+
+-------------------------------------------------------------------------------------------------------------------------
+import React from 'react'
+import ReactDOM fron 'react-dom'
+
+const jsxElement = <h1>20 days of react</h1>
+const rootElement = document.getElementById('root')
+
+ReactDOM.render(jsxElement,rootElement);
+------------
+import React from 'react'
+import ReactDOM fron 'react-dom'
+
+ReactDOM.render( 
+ <div>
+  <h1>20 days of react</h1>
+</div>,
+document.getElementById('root')
+);
+---------------
+import React from 'react'
+import ReactDOM fron 'react-dom'
+
+const header = (
+<header>
+    <h1>Welcome to 20 Days Of React</h1>
+    <h2>Getting Started React</h2>
+    <h3>JavaScript Library</h3>
+</header>
+)
+
+const rootElement = document.getElementById('root')
+ReactDOM.render(header, rootElement)
+
+
+
+
