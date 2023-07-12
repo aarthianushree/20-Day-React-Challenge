@@ -425,3 +425,53 @@ PropTypes ----> an object were we declare the types of the data which comes unde
 
 The defaultProps is a React component property that allows you to set default values for the props argument. If the prop property is passed, it will be changed. 
 The defaultProps can be defined as a property on the component class itself, to set the default props for the class.
+
+===================================================================================================================================================================================================================
+MAPPING ARRAYS
+
+Mapping Array of Numbers:
+
+function App() {
+
+  const num = [1,2,3,4,5];
+  return (
+    <div className="App">
+      {num.map( order=>{
+        return (
+          <p>{order}</p>
+        )
+      })}
+    </div>
+  );
+}
+
+export default App;
+...............................
+
+Mapping Array of Arrays:
+
+function App() {
+
+  const skills = [ ['html',6],
+  ['css',5],
+  ['js',7],
+  ['react',8]
+];
+
+  return (
+    <div className="App">
+      {skills.map( (order)=>{
+        return (
+          <p>{order.map( order=>{
+            return (
+            <p>{order}</p>
+              )
+          })}</p>
+        )   
+      })}
+    </div>
+  );
+}
+
+export default App;
+................................
