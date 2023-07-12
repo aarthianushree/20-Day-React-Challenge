@@ -1,0 +1,143 @@
+React Components:
+
+1.) What is the difference between a regular function and an arrow function?
+
+Regular function: ---> created using function declarations or expressions , which are constructable and callable.
+1. Regular functions created using function declarations or expressions are ‘constructible’ and ‘callable’. Since regular functions are constructible, they can be called using the ‘new’ keyword.
+
+EX: 
+let x = function(){
+console.log(arguments);
+}
+var y = new x(1,2,3)
+
+output: Arguments { 0: 1, 1: 2, 2:3,......}
+
+        -----------------------------------------------
+
+2. Arguments objects are available in arrow functions
+
+EX:
+<script>
+	let user = {
+		show(){
+			console.log(arguments);
+		}
+	};
+	user.show(1, 2, 3);
+</script>                           //arguments are defined here.
+
+output: Arguments(3) [1,2,3]
+
+3. regular functions do have their own this. 
+
+EX: 
+<script>
+	let user = {
+		name: "GFG",
+		gfg1:() => {
+			console.log("hello " + this.name); // no 'this' binding here
+		},
+		gfg2(){
+			console.log("Welcome to " + this.name); // 'this' binding works here
+		}
+	};
+	user.gfg1();
+	user.gfg2();
+</script>
+
+output: hello
+        Welcome to GFG
+
+                       ----------------------------------------------------------------------------------------------------------------------------------------------------
+
+Arrow function: ---> fat arrow . a new feature introduced in ES6, a more precise consise syntax writing function expression.
+1. the arrow functions are only ‘callable’ and not constructible. Thus, we will get a run-time error on trying to construct a non-constructible arrow function using the new keyword.
+
+EX: let x = ()=>{
+console.log(arguments);
+}
+new x(1,2,3);
+
+output: TypeError: x is not a constructor
+
+          ------------------------------------------------
+
+2. Arguments objects are not available in arrow functions
+
+EX: 
+ let user = {   
+            show_ar : () => {
+            console.log(...arguments);
+        }
+    };
+    user.show_ar(1, 2, 3);   
+
+output:    Referece Error: arguments is not defined. 
+
+       ------------------------------------------------------
+
+3.arrow functions do not have their own this.  
+
+EX:<script>
+	let user = {
+		name: "GFG",
+		gfg1:() => {
+			console.log("hello " + this.name); // no 'this' binding here
+		},
+		gfg2(){
+			console.log("Welcome to " + this.name); // 'this' binding works here
+		}
+	};
+	user.gfg1();
+	user.gfg2();
+</script>
+
+output: hello
+        Welcome to GFG
+
+===================================================================================================================================================================================================================
+
+2.) What is a React Component?
+
+it is a resuable chunk of code. basically a javascript function, which works in insollation and renders a jsx
+classified into two:  functional Component
+                      class Component
+
+===================================================================================================================================================================================================================
+
+3.) How do you make a React functional component?
+
+by writing a js function. In this functional components the return value is JSX code to render to the DOM tree.
+
+ex: //index.js File
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Demo from './App';
+
+ReactDOM.render(
+	<React.StrictMode>
+		<Demo />
+	</React.StrictMode>,
+	document.getElementById('root')
+);
+
+===================================================================================================================================================================================================================
+
+4.) What is the difference between a pure JavaScript function and a functional component?
+
+[i.] A pure component is a class-based component that implements shouldComponentUpdate() with a shallow comparison of the props and state. This means that the component will only re-render if its props or state
+have changed. This can improve performance by avoiding unnecessary re-renders
+It only compares shallow props and state and you cannot implement your own shouldComponentUpdate in it.
+
+[ii.] functional components accepts propa and state and these props and states changes / re-renders, if the parent components changes/re-renders.
+ stateless functional component is a function that takes props as an argument and returns a React element. It does not have a state object or lifecycle methods, so it is simpler than a class-based component. 
+However, it cannot handle state or complex behavior, so it is best suited for presentational components that only need to render based on props.
+
+===================================================================================================================================================================================================================
+
+5.) How small is a React component?
+
+if a React component has more than 200 lines of code, then it is too big. Big components are difficult to read, difficult to maintain and nearly impossible to unit test.
+your UI gets split into small, digestible, reusable chunks. Each component is usually compact (100–200 lines), a size which is easy for other developers to understand and modify.
+ In react component, we can return only one element.
