@@ -141,3 +141,287 @@ However, it cannot handle state or complex behavior, so it is best suited for pr
 if a React component has more than 200 lines of code, then it is too big. Big components are difficult to read, difficult to maintain and nearly impossible to unit test.
 your UI gets split into small, digestible, reusable chunks. Each component is usually compact (100–200 lines), a size which is easy for other developers to understand and modify.
  In react component, we can return only one element.
+
+...................................................................................................................................................................................................................
+
+
+
+PROPS -------> data carrier from parent to child components.
+
+ex1:
+function User(props){
+ return (
+   <div>
+     <h1>{props.fN}</h1>
+     <h1>{props.city}</h1>
+   </div>
+ )
+}
+
+<User 
+  fN = 'anu'
+  lN = 'n'
+  city = 'coimbatore'
+/>
+
+ex2: string props type
+import React from 'react'
+import ReactDOM from 'react-dom'
+
+const Header = (props) =>{
+    return (
+     <header>
+      <h1>{props.welcome}</h1>
+     </header>
+    )
+}
+
+const App = () =>{
+    return (
+       <div>
+            <Header welcome= '20 days of react'/>
+       </div>
+    )
+}
+
+the value of the props are written statically. 
+To write something dynamically, we can take the help of variables.
+
+ex3: string number props type
+
+import React from 'react'
+import ReactDOM from 'react-dom'
+
+const Header = (props)=>{
+   return (
+<header>
+    <div>
+      <h1>your name is ${props.n}</h1>
+      <h1>your age is ${props.presentAge}</h1>
+    </div>
+</header>
+   )
+}
+
+const App = ()=>{
+
+  let name = 'anu';
+  let birthYear = 2003;
+  let currentYear = 2023;
+  let age = currentYear - birthYear;
+  
+   return (
+     <div>
+         <Header 
+             n = {name}
+             presentAge = {age}
+         />
+     </div>
+   )
+}
+
+ex4 : boolean props
+
+import React from 'react'
+import ReactDOM from 'react-dom'
+
+const Header = (props)=>{
+   return (
+<header>
+    <div>
+      let votingAge = props.eligibletoVote ? "can vote" : "shouldn't vote"
+      <p>{votingAge}</p>
+    </div>
+</header>
+   )
+}
+
+const App = ()=>{
+
+  let name = 'anu';
+  let birthYear = 2003;
+  let currentYear = 2023;
+  let age = currentYear - birthYear;
+  let vote = age>=18;
+
+   return (
+     <div>
+         <Header 
+           eligibletoVote = {vote}
+         />
+     </div>
+   )
+}
+
+reactDOM.render(</App>,document.getElementById('root'));
+
+ex5: Array props type
+
+import React from 'react'
+import ReactDOM from 'react-dom'
+
+const Header = (props)=>{
+     return (
+       <Header>
+       <div>
+            const skillLists = props.skills.map( (order)=>{
+                return (
+                  <ul>
+                     <li>{order}</li>
+                  </ul>
+		)
+	    })
+            <p>{skillLists}</p>
+       </div>
+       </Header>
+     )
+}
+
+const App = ()=>{
+  return (
+    <div>
+        <Header 
+          skills = {
+            ['html' , 'css' , 'JS']
+	  }
+        />
+    </div>
+  )
+}
+
+const rootElement = document.getElementById('root')
+ReactDOM.render(<App />, rootElement)
+
+ex6: object props type
+
+import React from 'react'
+import ReactDOM from 'react-dom'
+
+// Header Component
+const Header = (props) => {
+  return (
+    <header>
+      <div className='header-wrapper'>
+        <h1>{props.data.welcome}</h1>
+        <h2>{props.data.title}</h2>
+        <h3>{props.data.subtitle}</h3>
+      </div>
+    </header>
+  )
+}
+
+// The App, or the parent or the container component
+// Functional Component
+const App = () => {
+  const data = {
+    welcome: 'Welcome to 30 Days Of React',
+    title: 'Getting Started React',
+    subtitle: 'JavaScript Library',
+  }
+
+  return (
+    <div className='app'>
+      <Header data={data} />
+    </div>
+  )
+}
+const rootElement = document.getElementById('root')
+// we render the JSX element using the ReactDOM package
+ReactDOM.render(<App />, rootElement)
+
+....
+import React from 'react'
+import ReactDOM from 'react-dom'
+
+const Header = () => {
+  return (
+    <header>
+      <div>
+        
+      </div>
+    </header>
+  )
+}
+
+const App = () => {
+  return (
+    <div>
+      <Header  />
+    </div>
+  )
+}
+
+const rootElement = document.getElementById('root')
+ReactDOM.render(<App />, rootElement)
+...
+
+................................................................................................
+
+import React from 'react'
+import ReactDOM from 'react-dom'
+
+const showDate = (time)=>{
+   const months = [ 'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December'];
+
+   const month = months[time.getMonth()].slice(0,3);
+   const year = time.getFullYear();
+   const date = time.getDate()
+
+   return `${month} ${date} ${year}`
+}
+
+const Header = (props) => {
+  return (
+    <header>
+      <div>
+        <h1>{props.fulldata.welcome}</h1>
+        <h1>{props.fulldata.learner.fN}</h1>
+        <p>{showDate(props.fulldate.date)}</p>
+      </div>
+    </header>
+  )
+}
+
+const App = () => {
+
+const data = {
+    welcome : "20 day react learning",
+    learner : {
+        fN : 'anu',
+        lN : 'N'
+    },
+    date: new Date(),
+}
+  return (
+    <div>
+      <Header fulldata={data} />
+    </div>
+  )
+}
+
+const rootElement = document.getElementById('root')
+ReactDOM.render(<App />, rootElement)
+
+...............................................................................................................................................................
+
+ques: 
+1.] What is a propTypes and props?
+
+Props -----> an object passed to the component instance
+PropTypes ----> an object were we declare the types of the data which comes under the props.
+
+2.] what is a default props?
+
+The defaultProps is a React component property that allows you to set default values for the props argument. If the prop property is passed, it will be changed. 
+The defaultProps can be defined as a property on the component class itself, to set the default props for the class.
