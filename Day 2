@@ -62,7 +62,7 @@ new x(1,2,3);
 output: TypeError: x is not a constructor
 
           ------------------------------------------------
-
+   
 2. Arguments objects are not available in arrow functions
 
 EX: 
