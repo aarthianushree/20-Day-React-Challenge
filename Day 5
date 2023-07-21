@@ -1,0 +1,37 @@
+Feching API:
+
+import { useState } from "react";
+import "./styles.css";
+
+export default function App() {
+
+  const [data, setdata] = useState([]);
+
+  function fetchData(){
+    fetch("https://jsonplaceholder.typicode.com/todos/")
+    .then(function(response){
+      return(
+        response.json()
+      )
+    })
+    .then(function(text){
+      setdata(text);
+      return(
+        console.log(text)
+      )
+    } )
+  }
+  
+  return (
+    <div className="App">
+      <h1>API request</h1>
+      <button onClick={fetchData}>getData</button>
+      {/* <pre>{JSON.stringify(data,null,1)}</pre> */}
+      {data.map(Item=>{
+        return(
+          <li>{Item.title}</li>
+        )
+      })}
+    </div>
+  );
+}
